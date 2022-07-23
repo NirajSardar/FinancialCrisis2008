@@ -1,0 +1,169 @@
+---
+title: "Financial Crisis"
+author: "Niraj Sardar"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+We are provided with a csv file containing annual financial data for firms. We are going to utilize 3 columns name fyear = fiscal year; tic = firm ID, ni = net income. 
+
+## The effect of the crisis in financial terms .
+
+For this we will be calculating the percent by which average annual net income decreases for firms during crisis years (2007-8) compared to pre-crisis years (2004-6)
+
+Step 1 : Load the data and filter it .
+
+```{r}
+library(dplyr)
+data = read.csv("V:/bkp N/FINC/Week4/Compustat 1990-2015 Lots.csv")
+data <- data %>% select('fyear','tic','ni')
+dataForCrisis <- data %>% filter(ni != 'NA', ni != 0 ,fyear >= 2004 & fyear <= 2008) 
+
+dataForCrisis <- dataForCrisis %>% group_by(dataForCrisis$tic) %>% filter(all(c(2004:2008 %in% dataForCrisis$fyear))) %>% ungroup
+
+```
+
+Step 2 :I have seperated the data in two data frames for pre-crisis and post crisis .
+After summerising the data I will merge both of them to calculate percentage change.
+For summarising the data we are calculating the annual net average income for the pre crisis and post crisis which are denoted by 'ANIPRE' and 'ANIPOST' respectively.
+
+```{r }
+
+dfPre <- dataForCrisis %>% filter(fyear >= 2004 & fyear <= 2006)
+PreCrisisData  <- dfPre %>% group_by(tic) %>% summarise(ANIPRE =mean(ni))
+head(PreCrisisData,5)
+
+dfPost  <- dataForCrisis %>% filter(fyear >= 2007 & fyear <= 2008)
+PostCrisisData  <- dfPost %>% group_by(tic) %>% summarise(ANIPOST =mean(ni) )
+head(PostCrisisData,5)
+
+```
+
+Step 3 :Merging the two datframes of pre and post crisis and calculating the percentage change 
+
+```{r }
+
+finalCrisDf <- inner_join(PreCrisisData , PostCrisisData , by = c("tic"))
+finalCrisDf$pchng = ((finalCrisDf$ANIPOST - finalCrisDf$ANIPRE)/abs(finalCrisDf$ANIPRE))*100
+head(finalCrisDf,5) 
+
+```
+
+Analysis : Based on the values it can be concluded that the net income has a very steep decline in its value . This crisis was result of crash of stock market which expanded globally . Net income contributes to a company's assets and can therefore affect the book value . Thus it can be concluded that due to crisis there must be certain cost cutting which multiple firms might have considered like firing employees, shutting down offices , changing the value of utilities , changing cost price and affecting the real estates business .
+
+
+## Calculate the absolute difference (AbsNi) of average annual net income between pre-crisis years and crisis years.
+
+```{r }
+
+dataMergeAbs <- inner_join(PreCrisisData , PostCrisisData , by = c("tic")) 
+dataMergeAbs$AbsNi =  abs(dataMergeAbs$ANIPOST - dataMergeAbs$ANIPRE)
+head(dataMergeAbs,5)
+
+```
+
+
+## Calculate the absolute value of largest and smallest changes in Net Income during pre- crisis and crisis period below :
+
+```{r }
+
+dataAbsLargestChanges <- dataMergeAbs %>% arrange(desc(AbsNi)) %>% select(tic,AbsNi) %>% top_n(10)
+
+print(dataAbsLargestChanges)
+
+dataAbsSmallestChanges <- dataMergeAbs %>% arrange(AbsNi) %>% select(tic,AbsNi) %>% top_n(-10)
+print(dataAbsSmallestChanges)
+
+```
+
+## Calculate the largest and smallest percentage changes in Net Income during pre- crisis and crisis period. 
+
+a) Considering absolute value of percentage change(pchng) considering both increase and decrease in net income the top 10 largest and smallest Percentage values of firms are calculated respectively below .
+
+```{r }
+finalCrisDf2 <- inner_join(PreCrisisData , PostCrisisData , by = c("tic"))
+
+finalCrisDf2$pchng = abs(((finalCrisDf2$ANIPOST - finalCrisDf2$ANIPRE)/ abs(finalCrisDf2$ANIPRE))*100)
+
+head(finalCrisDf2,3)
+
+LargestAbsPerChng <- finalCrisDf2 %>% arrange(pchng) %>% select(tic,pchng) %>% top_n(10)
+head(LargestAbsPerChng,10)
+SmallestAbsPerChng <- finalCrisDf2 %>% arrange(pchng) %>% select(tic,pchng) %>% top_n(-10)
+head(SmallestAbsPerChng,10)
+```
+
+b) Considering the ticker values which suffered loss during crisis and neglecting absolute value i.e neglecting firms having an increase in net income . The top 10 Smallest and Largest Percentage values of firms are calculated respectively below .
+
+```{r }
+finalCrisDf3 <- finalCrisDf %>% filter(pchng < 0)
+
+smallstPerChng <- finalCrisDf3 %>% arrange(desc(pchng)) %>% select(tic,pchng) %>% top_n(10)
+print(smallstPerChng)
+
+largestPerChng <- finalCrisDf3 %>% arrange(pchng) %>% select(tic,pchng) %>% top_n(-10)
+print(largestPerChng)
+
+```
+
+## Calculating the duration it takes for firms to recover from the crisis.
+
+So we will be taking maximum value of net income during pre crisis year and find out the duration after crisis when its highest value was breached.
+
+Step 1: Filtering and cleaning the data 
+
+```{r }
+dataForCrisis3 <- data %>% filter(fyear >= 2004 & fyear <= 2014)
+df5 <- dataForCrisis3 %>% group_by(tic) %>% filter(all(c(2004:2014 %in% fyear))) %>% ungroup
+head(df5,3)
+
+```
+
+Step 2: Calculate the maximum value of net income in pre crisis year
+```{r }
+dfPre <- df5 %>% filter(fyear >= 2004 & fyear <= 2006)
+PreCrisisData2  <- dfPre %>% group_by(tic) %>% summarise( MaxNI = max(ni))
+PreCrisisData2 <- PreCrisisData2 %>% filter(MaxNI != "NA")
+head(PreCrisisData2,5)
+```
+
+Step 3 : Restructing the data and summarizing it to find the duration the firms have taken to recover from financial crisis . I have added the column recovery in order to seperate two data frames (1 : recovered , 2: not recovered) . Then I have seprated the two data frames . In the recovery one I have calculated the minimum year for which the value of recovery column is 1 for each firms and then calculated the difference between 2008 and the min year (YearsForRecovery ) . In the another data frame I have just selected the distinct value of firms and appended it with a value 0 for YearsForRecovery . Then I have combined both the dataframes and used aggregate function . In this way we won't get any duplicate records and we will  get the data of all firms who have recovered and not recovered from the crisis .
+
+```{r }
+df5  <- df5 %>% filter(fyear>2008)
+finalnewDf <- inner_join(df5 , PreCrisisData2 , by = c("tic"))
+finalnewDf$f08 = 2008
+head(finalnewDf,5)
+
+finalnewDf2 <- finalnewDf %>% mutate(recovery = ifelse( ni >= MaxNI , 1 , 0 ))
+head(finalnewDf2,5)
+
+finalnewDf2Y <- finalnewDf2 %>% filter(recovery == 1)
+finalnewDf2N <- finalnewDf2 %>% filter(recovery == 0)
+
+finalnewDf2YSummary <- finalnewDf2Y %>% group_by(tic) %>% summarise(YearsForRecovery = min(fyear)-2008)
+head(finalnewDf2YSummary,5)
+
+finalnewDf2NSummary <- distinct(finalnewDf2N, tic)
+finalnewDf2NSummary$YearsForRecovery = 0
+head(finalnewDf2NSummary,5)
+
+finalData <- rbind(finalnewDf2YSummary ,finalnewDf2NSummary )
+dataForRecoveryCrisis <- aggregate(finalData$YearsForRecovery, by = list(finalData$tic), FUN = sum) 
+dataForRecoveryCrisis <- dataForRecoveryCrisis %>% mutate(YearsRecover = ifelse(x > 0 , x ,'NA'))
+dataForRecoveryCrisis = rename(dataForRecoveryCrisis , "tic" = Group.1 )
+dataForRecoveryCrisis   <- subset(dataForRecoveryCrisis  , select = -x)
+head(dataForRecoveryCrisis ,10)
+
+
+dataForRecoveryCrisisSum <- dataForRecoveryCrisis %>% filter(YearsRecover != 'NA') %>% mutate(yearNum =  as.numeric(YearsRecover))
+dataForRecoveryCrisisSum  <- subset(dataForRecoveryCrisisSum , c= - YearsRecover)
+dataForRecoveryCrisisSum  <- dataForRecoveryCrisisSum   %>% summarise(mean_dd = mean(yearNum), sd_dd = sd(yearNum), n = n())
+print(dataForRecoveryCrisisSum)
+```
+
+There are many companies who took long time to recover . Based on standard mean it can be concluded that after crisis it almost took 2.25 years for company to breach its highest level during which was calculated during pre crisis period .
+
+

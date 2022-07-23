@@ -1,0 +1,688 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Financial Crisis},
+  pdfauthor={Niraj Sardar},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Financial Crisis}
+\author{Niraj Sardar}
+\date{}
+
+\begin{document}
+\maketitle
+
+We are provided with a csv file containing annual financial data for
+firms. We are going to utilize 3 columns name fyear = fiscal year; tic =
+firm ID, ni = net income.
+
+\hypertarget{the-effect-of-the-crisis-in-financial-terms-.}{%
+\subsection{The effect of the crisis in financial terms
+.}\label{the-effect-of-the-crisis-in-financial-terms-.}}
+
+For this we will be calculating the percent by which average annual net
+income decreases for firms during crisis years (2007-8) compared to
+pre-crisis years (2004-6)
+
+Step 1 : Load the data and filter it .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"V:/bkp N/FINC/Week4/Compustat 1990{-}2015 Lots.csv"}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\StringTok{\textquotesingle{}fyear\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}tic\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}ni\textquotesingle{}}\NormalTok{)}
+\NormalTok{dataForCrisis }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(ni }\SpecialCharTok{!=} \StringTok{\textquotesingle{}NA\textquotesingle{}}\NormalTok{, ni }\SpecialCharTok{!=} \DecValTok{0}\NormalTok{ ,fyear }\SpecialCharTok{\textgreater{}=} \DecValTok{2004} \SpecialCharTok{\&}\NormalTok{ fyear }\SpecialCharTok{\textless{}=} \DecValTok{2008}\NormalTok{) }
+
+\NormalTok{dataForCrisis }\OtherTok{\textless{}{-}}\NormalTok{ dataForCrisis }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(dataForCrisis}\SpecialCharTok{$}\NormalTok{tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{all}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2004}\SpecialCharTok{:}\DecValTok{2008} \SpecialCharTok{\%in\%}\NormalTok{ dataForCrisis}\SpecialCharTok{$}\NormalTok{fyear))) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ ungroup}
+\end{Highlighting}
+\end{Shaded}
+
+Step 2 :I have seperated the data in two data frames for pre-crisis and
+post crisis . After summerising the data I will merge both of them to
+calculate percentage change. For summarising the data we are calculating
+the annual net average income for the pre crisis and post crisis which
+are denoted by `ANIPRE' and `ANIPOST' respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfPre }\OtherTok{\textless{}{-}}\NormalTok{ dataForCrisis }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(fyear }\SpecialCharTok{\textgreater{}=} \DecValTok{2004} \SpecialCharTok{\&}\NormalTok{ fyear }\SpecialCharTok{\textless{}=} \DecValTok{2006}\NormalTok{)}
+\NormalTok{PreCrisisData  }\OtherTok{\textless{}{-}}\NormalTok{ dfPre }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{ANIPRE =}\FunctionTok{mean}\NormalTok{(ni))}
+\FunctionTok{head}\NormalTok{(PreCrisisData,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   tic      ANIPRE
+##   <chr>     <dbl>
+## 1 ""        -2.03
+## 2 "0015B"   41.7 
+## 3 "0030B"   19.4 
+## 4 "0032A"  660   
+## 5 "0033A" 1305
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfPost  }\OtherTok{\textless{}{-}}\NormalTok{ dataForCrisis }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(fyear }\SpecialCharTok{\textgreater{}=} \DecValTok{2007} \SpecialCharTok{\&}\NormalTok{ fyear }\SpecialCharTok{\textless{}=} \DecValTok{2008}\NormalTok{)}
+\NormalTok{PostCrisisData  }\OtherTok{\textless{}{-}}\NormalTok{ dfPost }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{ANIPOST =}\FunctionTok{mean}\NormalTok{(ni) )}
+\FunctionTok{head}\NormalTok{(PostCrisisData,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   tic      ANIPOST
+##   <chr>      <dbl>
+## 1 ""         -3.14
+## 2 "0015B"  -120.  
+## 3 "0030B"     9.87
+## 4 "0032A" -4500.  
+## 5 "0033A" -5238.
+\end{verbatim}
+
+Step 3 :Merging the two datframes of pre and post crisis and calculating
+the percentage change
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalCrisDf }\OtherTok{\textless{}{-}} \FunctionTok{inner\_join}\NormalTok{(PreCrisisData , PostCrisisData , }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"tic"}\NormalTok{))}
+\NormalTok{finalCrisDf}\SpecialCharTok{$}\NormalTok{pchng }\OtherTok{=}\NormalTok{ ((finalCrisDf}\SpecialCharTok{$}\NormalTok{ANIPOST }\SpecialCharTok{{-}}\NormalTok{ finalCrisDf}\SpecialCharTok{$}\NormalTok{ANIPRE)}\SpecialCharTok{/}\FunctionTok{abs}\NormalTok{(finalCrisDf}\SpecialCharTok{$}\NormalTok{ANIPRE))}\SpecialCharTok{*}\DecValTok{100}
+\FunctionTok{head}\NormalTok{(finalCrisDf,}\DecValTok{5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##   tic      ANIPRE  ANIPOST  pchng
+##   <chr>     <dbl>    <dbl>  <dbl>
+## 1 ""        -2.03    -3.14  -54.6
+## 2 "0015B"   41.7   -120.   -389. 
+## 3 "0030B"   19.4      9.87  -49.0
+## 4 "0032A"  660    -4500.   -782. 
+## 5 "0033A" 1305    -5238.   -501.
+\end{verbatim}
+
+Analysis : Based on the values it can be concluded that the net income
+has a very steep decline in its value . This crisis was result of crash
+of stock market which expanded globally . Net income contributes to a
+company's assets and can therefore affect the book value . Thus it can
+be concluded that due to crisis there must be certain cost cutting which
+multiple firms might have considered like firing employees, shutting
+down offices , changing the value of utilities , changing cost price and
+affecting the real estates business .
+
+\hypertarget{calculate-the-absolute-difference-absni-of-average-annual-net-income-between-pre-crisis-years-and-crisis-years.}{%
+\subsection{Calculate the absolute difference (AbsNi) of average annual
+net income between pre-crisis years and crisis
+years.}\label{calculate-the-absolute-difference-absni-of-average-annual-net-income-between-pre-crisis-years-and-crisis-years.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataMergeAbs }\OtherTok{\textless{}{-}} \FunctionTok{inner\_join}\NormalTok{(PreCrisisData , PostCrisisData , }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"tic"}\NormalTok{)) }
+\NormalTok{dataMergeAbs}\SpecialCharTok{$}\NormalTok{AbsNi }\OtherTok{=}  \FunctionTok{abs}\NormalTok{(dataMergeAbs}\SpecialCharTok{$}\NormalTok{ANIPOST }\SpecialCharTok{{-}}\NormalTok{ dataMergeAbs}\SpecialCharTok{$}\NormalTok{ANIPRE)}
+\FunctionTok{head}\NormalTok{(dataMergeAbs,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##   tic      ANIPRE  ANIPOST   AbsNi
+##   <chr>     <dbl>    <dbl>   <dbl>
+## 1 ""        -2.03    -3.14    1.11
+## 2 "0015B"   41.7   -120.    162.  
+## 3 "0030B"   19.4      9.87    9.49
+## 4 "0032A"  660    -4500.   5160.  
+## 5 "0033A" 1305    -5238.   6542.
+\end{verbatim}
+
+\hypertarget{calculate-the-absolute-value-of-largest-and-smallest-changes-in-net-income-during-pre--crisis-and-crisis-period-below}{%
+\subsection{Calculate the absolute value of largest and smallest changes
+in Net Income during pre- crisis and crisis period below
+:}\label{calculate-the-absolute-value-of-largest-and-smallest-changes-in-net-income-during-pre--crisis-and-crisis-period-below}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataAbsLargestChanges }\OtherTok{\textless{}{-}}\NormalTok{ dataMergeAbs }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(AbsNi)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,AbsNi) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by AbsNi
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(dataAbsLargestChanges)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic    AbsNi
+##    <chr>  <dbl>
+##  1 AIG   57999.
+##  2 FNMA  35503.
+##  3 C     33091.
+##  4 GM    31549 
+##  5 VOD   29826.
+##  6 FMCC  29032.
+##  7 BAC2  23378.
+##  8 UBS   21383.
+##  9 RBS   19925.
+## 10 S     16889.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataAbsSmallestChanges }\OtherTok{\textless{}{-}}\NormalTok{ dataMergeAbs }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(AbsNi) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,AbsNi) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by AbsNi
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(dataAbsSmallestChanges)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic       AbsNi
+##    <chr>     <dbl>
+##  1 MDJT.1 0       
+##  2 AMRB   0.000167
+##  3 ASOE   0.000333
+##  4 CEHC   0.000833
+##  5 VSYS   0.00100 
+##  6 ANML.1 0.00117 
+##  7 VODG   0.00117 
+##  8 IHT    0.00133 
+##  9 ORRMF  0.00233 
+## 10 AXRX   0.0035
+\end{verbatim}
+
+\hypertarget{calculate-the-largest-and-smallest-percentage-changes-in-net-income-during-pre--crisis-and-crisis-period.}{%
+\subsection{Calculate the largest and smallest percentage changes in Net
+Income during pre- crisis and crisis
+period.}\label{calculate-the-largest-and-smallest-percentage-changes-in-net-income-during-pre--crisis-and-crisis-period.}}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Considering absolute value of percentage change(pchng) considering
+  both increase and decrease in net income the top 10 largest and
+  smallest Percentage values of firms are calculated respectively below
+  .
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalCrisDf2 }\OtherTok{\textless{}{-}} \FunctionTok{inner\_join}\NormalTok{(PreCrisisData , PostCrisisData , }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"tic"}\NormalTok{))}
+
+\NormalTok{finalCrisDf2}\SpecialCharTok{$}\NormalTok{pchng }\OtherTok{=} \FunctionTok{abs}\NormalTok{(((finalCrisDf2}\SpecialCharTok{$}\NormalTok{ANIPOST }\SpecialCharTok{{-}}\NormalTok{ finalCrisDf2}\SpecialCharTok{$}\NormalTok{ANIPRE)}\SpecialCharTok{/} \FunctionTok{abs}\NormalTok{(finalCrisDf2}\SpecialCharTok{$}\NormalTok{ANIPRE))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(finalCrisDf2,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 4
+##   tic     ANIPRE ANIPOST pchng
+##   <chr>    <dbl>   <dbl> <dbl>
+## 1 ""       -2.03   -3.14  54.6
+## 2 "0015B"  41.7  -120.   389. 
+## 3 "0030B"  19.4     9.87  49.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LargestAbsPerChng }\OtherTok{\textless{}{-}}\NormalTok{ finalCrisDf2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by pchng
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(LargestAbsPerChng,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic      pchng
+##    <chr>    <dbl>
+##  1 FSCI   6.08e 4
+##  2 3WCPSF 6.17e 4
+##  3 CBEY   6.29e 4
+##  4 DEK    6.97e 4
+##  5 RAE    6.98e 4
+##  6 0419B  9.59e 4
+##  7 ENTN   9.90e 4
+##  8 NHLD   1.34e 5
+##  9 STAQ   1.42e 5
+## 10 PGUS   1.89e19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SmallestAbsPerChng }\OtherTok{\textless{}{-}}\NormalTok{ finalCrisDf2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by pchng
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(SmallestAbsPerChng,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic      pchng
+##    <chr>    <dbl>
+##  1 MDJT.1 0      
+##  2 AMRB   0.00208
+##  3 UNT    0.0113 
+##  4 GXP    0.0427 
+##  5 SKH    0.0585 
+##  6 MCO    0.0661 
+##  7 CEHC   0.0896 
+##  8 WASH   0.107  
+##  9 KHD.Z  0.108  
+## 10 GAXIQ  0.133
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Considering the ticker values which suffered loss during crisis and
+  neglecting absolute value i.e neglecting firms having an increase in
+  net income . The top 10 Smallest and Largest Percentage values of
+  firms are calculated respectively below .
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalCrisDf3 }\OtherTok{\textless{}{-}}\NormalTok{ finalCrisDf }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(pchng }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{)}
+
+\NormalTok{smallstPerChng }\OtherTok{\textless{}{-}}\NormalTok{ finalCrisDf3 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(pchng)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by pchng
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(smallstPerChng)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic     pchng
+##    <chr>   <dbl>
+##  1 UNT   -0.0113
+##  2 GXP   -0.0427
+##  3 SKH   -0.0585
+##  4 MCO   -0.0661
+##  5 GAXIQ -0.133 
+##  6 VLCM  -0.142 
+##  7 ETCC  -0.154 
+##  8 VCBI  -0.167 
+##  9 TRNS  -0.229 
+## 10 ASGR  -0.235
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{largestPerChng }\OtherTok{\textless{}{-}}\NormalTok{ finalCrisDf3 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(tic,pchng) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{top\_n}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by pchng
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(largestPerChng)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    tic       pchng
+##    <chr>     <dbl>
+##  1 PGUS   -1.89e19
+##  2 NHLD   -1.34e 5
+##  3 ENTN   -9.90e 4
+##  4 0419B  -9.59e 4
+##  5 RAE    -6.98e 4
+##  6 DEK    -6.97e 4
+##  7 3WCPSF -6.17e 4
+##  8 BCAS   -6.04e 4
+##  9 SUPR   -5.87e 4
+## 10 DGNG   -5.44e 4
+\end{verbatim}
+
+\hypertarget{calculating-the-duration-it-takes-for-firms-to-recover-from-the-crisis.}{%
+\subsection{Calculating the duration it takes for firms to recover from
+the
+crisis.}\label{calculating-the-duration-it-takes-for-firms-to-recover-from-the-crisis.}}
+
+So we will be taking maximum value of net income during pre crisis year
+and find out the duration after crisis when its highest value was
+breached.
+
+Step 1: Filtering and cleaning the data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataForCrisis3 }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(fyear }\SpecialCharTok{\textgreater{}=} \DecValTok{2004} \SpecialCharTok{\&}\NormalTok{ fyear }\SpecialCharTok{\textless{}=} \DecValTok{2014}\NormalTok{)}
+\NormalTok{df5 }\OtherTok{\textless{}{-}}\NormalTok{ dataForCrisis3 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{all}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2004}\SpecialCharTok{:}\DecValTok{2014} \SpecialCharTok{\%in\%}\NormalTok{ fyear))) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ ungroup}
+\FunctionTok{head}\NormalTok{(df5,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 3
+##   fyear tic      ni
+##   <int> <chr> <dbl>
+## 1  2004 AIR    15.5
+## 2  2005 AIR    35.2
+## 3  2006 AIR    58.7
+\end{verbatim}
+
+Step 2: Calculate the maximum value of net income in pre crisis year
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfPre }\OtherTok{\textless{}{-}}\NormalTok{ df5 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(fyear }\SpecialCharTok{\textgreater{}=} \DecValTok{2004} \SpecialCharTok{\&}\NormalTok{ fyear }\SpecialCharTok{\textless{}=} \DecValTok{2006}\NormalTok{)}
+\NormalTok{PreCrisisData2  }\OtherTok{\textless{}{-}}\NormalTok{ dfPre }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{( }\AttributeTok{MaxNI =} \FunctionTok{max}\NormalTok{(ni))}
+\NormalTok{PreCrisisData2 }\OtherTok{\textless{}{-}}\NormalTok{ PreCrisisData2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(MaxNI }\SpecialCharTok{!=} \StringTok{"NA"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(PreCrisisData2,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   tic     MaxNI
+##   <chr>   <dbl>
+## 1 0033A 2552   
+## 2 0048A  139.  
+## 3 0051A    6.33
+## 4 0070A   11.8 
+## 5 0071A  134.
+\end{verbatim}
+
+Step 3 : Restructing the data and summarizing it to find the duration
+the firms have taken to recover from financial crisis . I have added the
+column recovery in order to seperate two data frames (1 : recovered , 2:
+not recovered) . Then I have seprated the two data frames . In the
+recovery one I have calculated the minimum year for which the value of
+recovery column is 1 for each firms and then calculated the difference
+between 2008 and the min year (YearsForRecovery ) . In the another data
+frame I have just selected the distinct value of firms and appended it
+with a value 0 for YearsForRecovery . Then I have combined both the
+dataframes and used aggregate function . In this way we won't get any
+duplicate records and we will get the data of all firms who have
+recovered and not recovered from the crisis .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df5  }\OtherTok{\textless{}{-}}\NormalTok{ df5 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(fyear}\SpecialCharTok{\textgreater{}}\DecValTok{2008}\NormalTok{)}
+\NormalTok{finalnewDf }\OtherTok{\textless{}{-}} \FunctionTok{inner\_join}\NormalTok{(df5 , PreCrisisData2 , }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"tic"}\NormalTok{))}
+\NormalTok{finalnewDf}\SpecialCharTok{$}\NormalTok{f08 }\OtherTok{=} \DecValTok{2008}
+\FunctionTok{head}\NormalTok{(finalnewDf,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 5
+##   fyear tic      ni MaxNI   f08
+##   <int> <chr> <dbl> <dbl> <dbl>
+## 1  2009 AIR    44.6  58.7  2008
+## 2  2010 AIR    69.8  58.7  2008
+## 3  2011 AIR    67.7  58.7  2008
+## 4  2012 AIR    55    58.7  2008
+## 5  2013 AIR    72.9  58.7  2008
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalnewDf2 }\OtherTok{\textless{}{-}}\NormalTok{ finalnewDf }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{recovery =} \FunctionTok{ifelse}\NormalTok{( ni }\SpecialCharTok{\textgreater{}=}\NormalTok{ MaxNI , }\DecValTok{1}\NormalTok{ , }\DecValTok{0}\NormalTok{ ))}
+\FunctionTok{head}\NormalTok{(finalnewDf2,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 6
+##   fyear tic      ni MaxNI   f08 recovery
+##   <int> <chr> <dbl> <dbl> <dbl>    <dbl>
+## 1  2009 AIR    44.6  58.7  2008        0
+## 2  2010 AIR    69.8  58.7  2008        1
+## 3  2011 AIR    67.7  58.7  2008        1
+## 4  2012 AIR    55    58.7  2008        0
+## 5  2013 AIR    72.9  58.7  2008        1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalnewDf2Y }\OtherTok{\textless{}{-}}\NormalTok{ finalnewDf2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(recovery }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{finalnewDf2N }\OtherTok{\textless{}{-}}\NormalTok{ finalnewDf2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(recovery }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)}
+
+\NormalTok{finalnewDf2YSummary }\OtherTok{\textless{}{-}}\NormalTok{ finalnewDf2Y }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(tic) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{YearsForRecovery =} \FunctionTok{min}\NormalTok{(fyear)}\SpecialCharTok{{-}}\DecValTok{2008}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(finalnewDf2YSummary,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   tic   YearsForRecovery
+##   <chr>            <dbl>
+## 1 0048A                3
+## 2 0070A                1
+## 3 0071A                5
+## 4 0100A                2
+## 5 0123A                4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalnewDf2NSummary }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(finalnewDf2N, tic)}
+\NormalTok{finalnewDf2NSummary}\SpecialCharTok{$}\NormalTok{YearsForRecovery }\OtherTok{=} \DecValTok{0}
+\FunctionTok{head}\NormalTok{(finalnewDf2NSummary,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   tic   YearsForRecovery
+##   <chr>            <dbl>
+## 1 AIR                  0
+## 2 AAL                  0
+## 3 CECE                 0
+## 4 AVX                  0
+## 5 PNW                  0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{finalData }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(finalnewDf2YSummary ,finalnewDf2NSummary )}
+\NormalTok{dataForRecoveryCrisis }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(finalData}\SpecialCharTok{$}\NormalTok{YearsForRecovery, }\AttributeTok{by =} \FunctionTok{list}\NormalTok{(finalData}\SpecialCharTok{$}\NormalTok{tic), }\AttributeTok{FUN =}\NormalTok{ sum) }
+\NormalTok{dataForRecoveryCrisis }\OtherTok{\textless{}{-}}\NormalTok{ dataForRecoveryCrisis }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{YearsRecover =} \FunctionTok{ifelse}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{ , x ,}\StringTok{\textquotesingle{}NA\textquotesingle{}}\NormalTok{))}
+\NormalTok{dataForRecoveryCrisis }\OtherTok{=} \FunctionTok{rename}\NormalTok{(dataForRecoveryCrisis , }\StringTok{"tic"} \OtherTok{=}\NormalTok{ Group}\FloatTok{.1}\NormalTok{ )}
+\NormalTok{dataForRecoveryCrisis   }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataForRecoveryCrisis  , }\AttributeTok{select =} \SpecialCharTok{{-}}\NormalTok{x)}
+\FunctionTok{head}\NormalTok{(dataForRecoveryCrisis ,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      tic YearsRecover
+## 1  0033A           NA
+## 2  0048A            3
+## 3  0051A           NA
+## 4  0070A            1
+## 5  0071A            5
+## 6  0079A           NA
+## 7  0084A           NA
+## 8  0100A            2
+## 9  0123A            4
+## 10 0124A           NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataForRecoveryCrisisSum }\OtherTok{\textless{}{-}}\NormalTok{ dataForRecoveryCrisis }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(YearsRecover }\SpecialCharTok{!=} \StringTok{\textquotesingle{}NA\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{yearNum =}  \FunctionTok{as.numeric}\NormalTok{(YearsRecover))}
+\NormalTok{dataForRecoveryCrisisSum  }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataForRecoveryCrisisSum , }\AttributeTok{c=} \SpecialCharTok{{-}}\NormalTok{ YearsRecover)}
+\NormalTok{dataForRecoveryCrisisSum  }\OtherTok{\textless{}{-}}\NormalTok{ dataForRecoveryCrisisSum   }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_dd =} \FunctionTok{mean}\NormalTok{(yearNum), }\AttributeTok{sd\_dd =} \FunctionTok{sd}\NormalTok{(yearNum), }\AttributeTok{n =} \FunctionTok{n}\NormalTok{())}
+\FunctionTok{print}\NormalTok{(dataForRecoveryCrisisSum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    mean_dd    sd_dd    n
+## 1 2.146608 1.444468 2742
+\end{verbatim}
+
+There are many companies who took long time to recover . Based on
+standard mean it can be concluded that after crisis it almost took 2.25
+years for company to breach its highest level during which was
+calculated during pre crisis period .
+
+\end{document}
